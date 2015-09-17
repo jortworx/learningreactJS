@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <script src="https://fb.me/react-with-addons-0.13.3.js"></script>
+        <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+    </head>
+    <body>
+        <script type="text/jsx">
+        	//React - Events onClick
+        	//React - Props(aka Properties) to pass data to React
+        	var Greeting = React.createClass({
+        		getDefaultProps: function(){
+        			return {
+        				salutation: "Hello",
+        				name: "Guest"
+        			}
+        		},
+
+        		render: function(){
+        			//return <h2>Hello React!</h2>;
+        			//return React.createElement('h2', null, 'Hello {this.props.name}');
+
+        			return <h2 onClick={this.handleClick}> {this.props.salutation} {this.props.name}</h2>;
+        		},
+
+        		handleClick: function(){
+        			alert('SUCH REACT!');
+        		}
+        	})
+        //React.render(<Greeting />, document.body);
+        //React.render(React.createElement(Greeting), document.body);
+        //React.render(<Greeting name='Bob' salutation='Hi' />, document.body);
+        React.render(<Greeting/>, document.body);
+        </script>
+
+		
+
+        <!-- <script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.2.min.js"></script> -->
+    </body>
+</html>

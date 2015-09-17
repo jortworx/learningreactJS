@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="myForm"></div>
+        <div id="myList"></div>
+        <script type="text/jsx">
+            //ReactJS - One Way data flow
+            var MyForm = React.createClass({
+                getInitialState: function(){
+                    return {
+                        name: '',
+                        last_name: '',
+                        happy: true
+                    };
+                },
+
+                handleChange: function(e){
+                    console.log(e.target.value);
+                    this.setState({name: e.target.value})
+                },
+
+                handleChangeLastName: function(e){
+                    console.log(e.target.value);
+                    this.setState({last_name: e.target.value})
+                },
+
+                handleCheckboxChange: function(e){
+                    this.setState({happy: e.target.checked})
+                },
+
+                render: function(){
+                    return <div>
+                        <input type="text" onChange={this.handleChange} value={this.state.name} />
+                        <input type="text" onChange={this.handleChangeLastName} value={this.state.last_name} />
+                        <br/>
+                        <label>
+                            Happy?
+                            <input type="checkbox" onChange={this.handleCheckboxChange} />
+                        </label>
+                        <h2>Hello {this.state.name}, {this.state.last_name} {(this.state.happy) ? "!" : ":(" }</h2>
+                        </div>;
+                },
+
+            });
+
+            var items = [
+                "take an array as props",
+                "call map() on athe array()",
+                "for wact item, return"
+            ];
+
+            var MyList = React.createClass({
+
+                render: function(){
+                    return <ul>
+                        {this.props.items.map(function (item){
+                            return <li>{item}</li>
+                        })}
+                    </ul>;
+                }
+            });
+
+
+            React.render(<MyForm />, document.getElementById('myForm'));
+            React.render(<MyList items={items} />, document.getElementById('myList'));
+        </script>
+
+        <script src="https://fb.me/react-with-addons-0.13.3.js"></script>
+        <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+
+    </body>
+</html>

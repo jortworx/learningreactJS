@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <script src="https://fb.me/react-with-addons-0.13.3.js"></script>
+        <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+    </head>
+    <body>
+        <script type="text/jsx">
+            //ReactJS - Component State
+            var ClickCounter = React.createClass({
+                getInitialState: function(){
+                    return {timesClicked: 0};
+                },
+                handleClick: function(){
+                    this.setState({
+                        timesClicked: this.state.timesClicked + 1
+                    })
+                },
+                render: function(){
+                    return <div onClick={this.handleClick}><h2>{this.state.timesClicked}</h2></div>;                                    }
+            });
+
+            React.render(<ClickCounter/>, document.body);
+        </script>
+
+	    </body>
+</html>
